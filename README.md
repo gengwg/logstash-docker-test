@@ -12,3 +12,17 @@ The stdin plugin is now waiting for input:
 Hello World!
 2017-03-29T23:58:14.834Z 01866fcf1166 Hello World!
 ```
+
+### Deploy to Kubernetes
+
+```
+# build the image
+docker build -t docker.example.com/organization/logstash-oldpublisher .
+# push to registry
+docker push docker.example.com/organization/logstash-oldpublisher
+
+# deploy to k8s
+kubectl -s http://kubernetes.organization.example.com:8080 apply -f logstash-k8s-deployment.yaml
+```
+
+
