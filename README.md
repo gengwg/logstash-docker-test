@@ -2,7 +2,6 @@
 
 ```
 $ docker build -t logstash-test .
-
 $ docker run -it logstash-test
 Sending Logstash's logs to /usr/share/logstash/logs which is now configured via log4j2.properties
 [2017-03-29T23:58:05,912][INFO ][logstash.setting.writabledirectory] Creating directory {:setting=>"path.queue", :path=>"/usr/share/logstash/data/queue"}
@@ -11,18 +10,17 @@ Sending Logstash's logs to /usr/share/logstash/logs which is now configured via 
 [2017-03-29T23:58:06,111][INFO ][logstash.pipeline        ] Pipeline main started
 The stdin plugin is now waiting for input:
 [2017-03-29T23:58:06,168][INFO ][logstash.agent           ] Successfully started Logstash API endpoint {:port=>9600}
-Hello World!
-2017-03-29T23:58:14.834Z 01866fcf1166 Hello World!
+Hello World! <----
+2017-03-29T23:58:14.834Z 01866fcf1166 Hello World! <----
 ```
 
 ## Deploy to Kubernetes
 
 ```
 # build the image
-docker build -t docker.example.com/organization/logstash-oldpublisher .
+docker build -t docker.example.com/organization/logstash-test .
 # push to registry
-docker push docker.example.com/organization/logstash-oldpublisher
-
+docker push docker.example.com/organization/logstash-test
 # deploy to k8s
 kubectl -s http://kubernetes.organization.example.com:8080 apply -f logstash-k8s-deployment.yaml
 ```
